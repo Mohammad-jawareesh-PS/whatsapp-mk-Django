@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="{{description}}">
+    <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+    />
+    <link rel="stylesheet" href="/static/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/main/main.css?{% now 'U' %}" />
+    {% for style in css %}
+      <link rel="stylesheet" href="/static/css/{{style}}?{% now 'U' %}" />
+    {% endfor %}
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <div class="dashboard">
+
+      {% comment %} lift {% endcomment %}
+      <div class="left">
+        <div class="top">
+          <div class="logo">
+            <span class="img"></span>
+            <span>Whatsapp Mk</span>
+          </div>
+        </div>
+        <span>الادوات</span>
+        <div class="center">
+          
+          <a href="/dashboard" id="dashboard">
+            <i class="material-icons-two-tone">dashboard</i>
+            <span>لوحة التحكم</span>
+          </a>
+
+          <a href="/offers/normal" id="offers">
+            <i class="material-icons-two-tone">api</i>
+            {% comment %} <span>اشتراك شهري</span> {% endcomment %}
+            <span>العروض</span>
+          </a>
+
+          <a href="#" style="opacity: 0.3;" title="غير متوفر حاليا">
+            <i class="material-icons-two-tone">schedule</i>
+            <span>السجل</span>
+          </a>
+
+          <a href_data="/dashboard/message_engine" id="message_engine" style="opacity: 0.3;" title="غير متوفر حاليا">
+            <i class="material-icons-two-tone">send</i>
+            <span>محرك الرسائل</span>
+          </a>
+
+          <a id="logout_bt">
+            <i class="material-icons-two-tone">logout</i>
+            <span>تسجيل الخروج</span>
+          </a>
+        </div>
+      </div>
+
+      {% comment %} right {% endcomment %}
+      <div class="right">
+        <div class="header">
+          <div class="logo">
+            <span class="img"></span>
+            <span>Whatsapp Mk</span>
+          </div>
+
+          <div class="full">
+            <div class="left">
+              <i class="material-icons" id="menu_controle">first_page</i>
+              <div class="wp">
+                <img src="/static/img/wp.svg" alt="" />
+                <span>300</span>
+              </div>
+            </div>
+
+            <div class="right">
+              <span class="user_first_later">{{profile.user.username|make_list|first}}</span>
+              <span class="username">{{profile.user.username}}</span>
+            </div>
+          </div>
+        </div>
+        {% block content %}{% endblock content %}
+      </div>
+
+
+    </div>
+    <script src="/static/js/all.min.js"></script>
+    <script src="/static/js/main/main.js?{% now 'U' %}"></script>
+    {% for script in js %}
+      <script src="/static/js/{{script}}?{% now 'U' %}"></script>
+    {% endfor %}
+  </body>
+</html>

@@ -1,0 +1,167 @@
+body {
+  background-color: white !important;
+  overflow: hidden;
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // lift
+  .left {
+    width: calc(100% - 650px);
+    background-color: #e7ecf8;
+    .container {
+      .background {
+        background-image: url(/static/img/register.png);
+        background-repeat: no-repeat;
+        background-size: 60%;
+        background-position: center;
+        height: 100vh;
+      }
+    }
+  }
+
+  // right
+  .right {
+    width: 650px;
+    padding: 80px;
+    direction: rtl;
+    .container {
+      .logo {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        span:not(span.img) {
+          color: #40475c;
+          font-size: 21px;
+          font-weight: 700;
+          margin-right: 10px;
+        }
+        span.img {
+          display: flex;
+          background: url(/static/img/logo1.png) no-repeat;
+          height: 50px;
+          background-size: 50px;
+          width: 50px;
+        }
+      }
+      .sing-up_login {
+        margin: 30px 0;
+        color: #909aa7;
+        margin: 25px 0 35px;
+        a {
+          color: #49dccb;
+          transition: border 0.2s ease-in-out, background-color 0.2s ease-in-out;
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+      }
+      form {
+        label {
+          display: block;
+          margin-bottom: 8px;
+          font-size: 16px;
+          font-weight: bold;
+        }
+        input:not(input[type="submit"]) {
+          border-radius: 8px;
+          padding: 10px 18px;
+          border-color: #e3e6ea;
+          color: #24292e;
+          transition: border 0.2s ease-in-out, background-color 0.2s ease-in-out;
+          margin-bottom: 20px;
+          display: block;
+          width: 100%;
+          font-size: 1rem;
+          font-weight: 400;
+          line-height: 1.5;
+          background-color: #e9ecef63;
+          background-clip: padding-box;
+          border: 0.5px solid #ced4da;
+          outline: none;
+          &:focus {
+            border: 0.5px solid #128c7e;
+          }
+        }
+        .bottom {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 35px;
+          align-items: center;
+          input {
+            color: #fff;
+            background-color: #128c7e;
+            border-color: #128c7e61;
+            padding: 6px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: all 0.2s ease-in-out !important;
+            line-height: 1.5;
+            text-align: center;
+            outline: none;
+            font-weight: 900;
+          }
+          a {
+            color: #bbc;
+            transition: border 0.2s ease-in-out,
+              background-color 0.2s ease-in-out;
+            &:hover {
+              color: #49dccb;
+            }
+          }
+        }
+      }
+      .hr {
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: #e8e8e8;
+        margin: 30px 0;
+      }
+      .social-media {
+        display: flex;
+        direction: initial;
+        align-items: center;
+        .google {
+          background: url(/static/img/google.png) no-repeat;
+          background-size: cover;
+        }
+        .facebook {
+          background: url(/static/img/facebook.png) no-repeat;
+          background-size: cover;
+        }
+        .twitter {
+          background: url(/static/img/twitter.png) no-repeat;
+          background-size: cover;
+        }
+        span {
+          width: 30px;
+          height: 30px;
+          margin-right: 15px;
+          display: inline-block;
+          opacity: 0.5;
+          filter: grayscale(1);
+          transition: all 0.2s ease-in-out;
+          cursor: pointer;
+          &:hover {
+            opacity: 1;
+            filter: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  .login {
+    .left {
+      display: none;
+    }
+    .right {
+      padding: 60px !important;
+    }
+  }
+}

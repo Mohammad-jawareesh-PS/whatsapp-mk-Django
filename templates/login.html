@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/login/main.css?{% now 'U' %}" />
+    <link rel="stylesheet" href="/static/css/main/main.css?{% now 'U' %}" />
+    <title>Whatsapp Mk</title>
+  </head>
+  <body>
+    <div class="login">
+      <!-- left section -->
+      <div class="left">
+        <div class="container">
+          <div class="background"></div>
+        </div>
+      </div>
+
+      <!-- right section -->
+      <div class="right">
+        <div class="container">
+          <div class="logo">
+            <span class="img"></span>
+            <span>Whatsapp Mk</span>
+          </div>
+
+          <div class="sing-up_login">
+            <span>الرجاء تسجيل الدخول</span>
+            <div class="cont">
+              <span>ليس لديك حساب؟</span>
+              <a href="/register/sign-up">انشئ واحد</a>
+            </div>
+          </div>
+
+          <form action="" method="GET">
+            {% csrf_token %}
+            <label for="username">اسم المستخدم</label>
+            <input type="text" id="username" name="username" required />
+
+            <label for="password">كلمة المرور</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              required
+            />
+            <div class="bottom">
+              <input type="submit" value="دخول" />
+              <a href="#">نسيت كلمات المرور؟</a>
+            </div>
+          </form>
+
+          <div class="hr"></div>
+          <div class="social-media">
+            <span class="google"></span>
+            <span class="facebook"></span>
+            <span class="twitter"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/static/js/login/main.js?{% now 'U' %}"></script>
+    <script src="/static/js/main/main.js?{% now 'U' %}"></script>
+  </body>
+</html>

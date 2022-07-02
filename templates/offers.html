@@ -1,0 +1,237 @@
+{% extends 'base/main.html' %} {% load static %}
+
+{% block content %}
+
+  {% comment %} content {% endcomment %}
+  <div class="content">
+    <div class="offers">
+
+      <div class="card_payment_box none">
+        <form method="GET" class="form">
+          {% csrf_token %}
+          <input type="text" name="price" class="none">
+          <div class="top">
+            <span class="title"> <span id="this_price"></span> اتمام عملية الدفع</span>
+            <span class="close-box"></span>
+          </div>
+
+          <div class="center">
+
+            <div class="form-group">
+              <label for="fullName">اسمك الكامل (على البطاقة)</label>
+              <div class="input_group">
+                <div class="icon">
+                  <i class="fa fa-user"></i>
+                </div>
+                <input type="text" name="fullName" id="fullName" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="cardNumber">رقم بطاقتك</label>
+              <div class="input_group">
+                <div class="icon">
+                  <i class="fa fa-credit-card"></i>
+                </div>
+                <input type="number" name="cardNumber" id="cardNumber" required placeholder="XXXX XXXX XXXX XXXX">
+              </div>
+            </div>
+
+            <div class="bottom">
+              <div class="form_group_input">
+                <label for="month">تاريخ انتهاء الصلاحية</label>
+                <div class="input_group">
+                  <input type="number" name="month" id="month" placeholder="MM" required>
+                  <input type="number" name="year" id="year" placeholder="YY" required>
+                </div>
+              </div>
+              <div class="CVV">
+                <label for="CVV">CVV</label>
+                <input type="number" name="CVV" id="CVV" placeholder="123" required>
+              </div>
+            </div>
+
+            <input type="submit" value="تاكيد الدفع">
+
+          </div>
+
+        </form>
+      </div>
+
+      <div class="list Monthly">
+        
+
+        
+        {% for monthly_offer in monthly_offers %}
+          
+          <div class="cont">
+            <div class="box">
+              <div class="top">
+                <span>${{monthly_offer.price}}<span class="and__smal"></span></span>
+              </div>
+              <div class="center">
+                <span> {{monthly_offer.number_digits}} رقم <span class="and__">(+{{monthly_offer.free_number}})</span></span>
+                <span>{{monthly_offer.number_of_daily_operations}} رقم لعملية الاسال الواحدة</span>
+                <span>{{monthly_offer.daily_operations}} عملية ارسال يومية</span>
+                
+                {% if monthly_offer.sent_number_type == "shared" %}
+                  <span>رقم ارسال عشوائي مشترك</span>
+                {% endif %}
+
+                {% if monthly_offer.sent_number_type == "private" %}
+                  <span>رقم ارسال عشوائي خاص</span>
+                {% endif %}
+                  
+                <span>نوع الارسال : رسالة نصية</span>
+              </div>
+              <div class="bottom">
+                <button price="${{monthly_offer.price}}" class="by_now">اشترك الان</button>
+              </div>
+            </div>
+          </div>
+
+        {% endfor %}
+          
+        
+
+
+
+        {% comment %} <div class="cont">
+          <div class="box">
+            <div class="top">
+              <span>$4.99<span class="and__smal">/Mo</span></span>
+            </div>
+            <div class="center">
+              <span> 300 رقم <span class="and__">(+15)</span></span>
+              <span>90 رقم لعملية الاسال الواحدة</span>
+              <span>4 عملية ارسال يومية</span>
+              <span>1 رقم ارسال عشوائي مشترك</span>
+              <span>نوع الارسال : رسالة نصية</span>
+            </div>
+            <div class="bottom">
+              <button price="$4.99" class="by_now">اشترك الان</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="cont">
+          <div class="box">
+            <div class="top">
+              <span>$6.99<span class="and__smal">/Mo</span></span>
+            </div>
+            <div class="center">
+              <span> 700 رقم <span class="and__">(+50)</span></span>
+              <span>200 رقم لعملية الاسال الواحدة</span>
+              <span>4 عملية ارسال يومية</span>
+              <span>2 رقم ارسال عشوائي مشترك</span>
+              <span>نوع الارسال : رسالة نصية</span>
+            </div>
+            <div class="bottom">
+              <button price="$6.99" class="by_now">اشترك الان</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="cont">
+          <div class="box">
+            <div class="top">
+              <span>$9.99<span class="and__smal">/Mo</span></span>
+            </div>
+            <div class="center">
+              <span> 900 رقم <span class="and__">(+100)</span></span>
+              <span>300 رقم لعملية الاسال الواحدة</span>
+              <span>6 عملية ارسال يومية</span>
+              <span>3 رقم ارسال عشوائي مشترك</span>
+              <span>نوع الارسال : رسالة نصية</span>
+            </div>
+            <div class="bottom">
+              <button price="$9.99" class="by_now">اشترك الان</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="cont">
+          <div class="box">
+            <div class="top">
+              <span>$14.99<span class="and__smal">/Mo</span></span>
+            </div>
+            <div class="center">
+              <span> 1200 رقم <span class="and__">(+150)</span></span>
+              <span>400 رقم لعملية الاسال الواحدة</span>
+              <span>8 عملية ارسال يومية</span>
+              <span>4 رقم ارسال عشوائي مشترك</span>
+              <span>نوع الارسال : رسالة نصية</span>
+            </div>
+            <div class="bottom">
+              <button price="$14.99" class="by_now">اشترك الان</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="cont">
+          <div class="box">
+            <div class="top">
+              <span>$20.99<span class="and__smal">/Mo</span></span>
+            </div>
+            <div class="center">
+              <span> 2000 رقم <span class="and__">(+200)</span></span>
+              <span>500 رقم لعملية الاسال الواحدة</span>
+              <span>6 عملية ارسال يومية</span>
+              <span>4 رقم ارسال عشوائي مشترك</span>
+              <span>نوع الارسال : رسالة نصية</span>
+            </div>
+            <div class="bottom">
+              <button price="$20.99" class="by_now">اشترك الان</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="cont">
+          <div class="box">
+            <div class="top">
+              <span>$49.99<span class="and__smal">/Mo</span></span>
+            </div>
+            <div class="center">
+              <span> 5000 رقم <span class="and__">(+300)</span></span>
+              <span>1000 رقم لعملية الاسال الواحدة</span>
+              <span>6 عملية ارسال يومية</span>
+              <span>1 رقم ارسال عشوائي خاص</span>
+              <span>نوع الارسال : رسالة نصية</span>
+            </div>
+            <div class="bottom">
+              <button price="$49.99" class="by_now">اشترك الان</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="cont">
+          <div class="box">
+            <div class="top">
+              <span>$99.99<span class="and__smal">/Mo</span></span>
+            </div>
+            <div class="center">
+              <span> 12000 رقم <span class="and__">(+500)</span></span>
+              <span>3000 رقم لعملية الاسال الواحدة</span>
+              <span>6 عملية ارسال يومية</span>
+              <span>2 رقم ارسال عشوائي خاص</span>
+              <span>نوع الارسال : رسالة نصية</span>
+            </div>
+            <div class="bottom">
+              <button price="$99.99" class="by_now">اشترك الان</button>
+            </div>
+          </div>
+        </div> {% endcomment %}
+
+      </div>
+
+      <div class="bottom">
+        <div class="box">
+          <div class="right">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}

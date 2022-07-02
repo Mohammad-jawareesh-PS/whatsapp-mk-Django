@@ -1,0 +1,98 @@
+{% extends 'base/main.html' %} {% load static %}
+
+{% block content %}
+
+  {% comment %} content {% endcomment %}
+  <div class="content">
+    <div class="chat">
+      <div class="full_element_back none">
+        <div class="box">
+          <span>جميع رسائلك ارسلت بنجاح </span>
+          <a href="/dashboard">لوحة التحكم</a>
+        </div>
+      </div>
+      <div class="left">
+        <div class="header">
+          <div class="left">
+            <i class="fa-solid fa-user"></i>
+            <span class="header_this_number"></span>
+          </div>
+          <div class="right">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+        </div>
+        <div class="bottom">
+          <span class="bg"></span>
+
+          <div class="controle-botton">
+            <button class="stop">اقاف</button>
+            <button class="start none">بدأ</button>
+
+            <div class="left">
+              <div class="reloader"></div>
+              <span class="sending">جاري ارسال الرسالة</span>
+              <span class="sended none">تم ارسال الرسالة</span>
+            </div>
+          </div>
+          <div class="mesages">
+            {% for message_ in messages %}
+
+              <div class="mesages_by_number" number="{{message_.received_number.phone_number}}">
+                <p>{{message_.message}}</p>
+                <span class="metadata">
+                  <span class="tick"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" id="msg-dblcheck-ack" x="2063" y="2076"><path d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.88a.32.32 0 0 1-.484.032l-.358-.325a.32.32 0 0 0-.484.032l-.378.48a.418.418 0 0 0 .036.54l1.32 1.267a.32.32 0 0 0 .484-.034l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.88a.32.32 0 0 1-.484.032L1.892 7.77a.366.366 0 0 0-.516.005l-.423.433a.364.364 0 0 0 .006.514l3.255 3.185a.32.32 0 0 0 .484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z" fill="#4fc3f7"></path></svg></span>
+                  <span class="time">{{message_.added_date}}</span>
+                </span>
+              </div>
+
+            {% endfor %}
+
+            <div class="this_message">
+              <p>{{this_task.message}}</p>
+              <span class="metadata">
+                <span class="tick"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" id="msg-dblcheck-ack" x="2063" y="2076"><path d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.88a.32.32 0 0 1-.484.032l-.358-.325a.32.32 0 0 0-.484.032l-.378.48a.418.418 0 0 0 .036.54l1.32 1.267a.32.32 0 0 0 .484-.034l6.272-8.048a.366.366 0 0 0-.064-.512zm-4.1 0l-.478-.372a.365.365 0 0 0-.51.063L4.566 9.88a.32.32 0 0 1-.484.032L1.892 7.77a.366.366 0 0 0-.516.005l-.423.433a.364.364 0 0 0 .006.514l3.255 3.185a.32.32 0 0 0 .484-.033l6.272-8.048a.365.365 0 0 0-.063-.51z" fill="#4fc3f7"></path></svg></span>
+                <span class="this_time"></span>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="header">
+          <div class="left">
+            <img src="/static/img/main_phone_number_profile.png" alt="">
+            <span>حساب تجاري</span>
+          </div>
+          <div class="right">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+        </div>
+        <div class="bottom">
+          <span class="bg"></span>
+          <div class="phones">
+
+            {% for number in numbers %}
+              <div class="received_number" number="{{number.phone_number}}">
+                <i class="fa-solid fa-user"></i>
+                <span class="phone_number_db">{{number.phone_number}}</span>
+              </div>
+            {% endfor %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="none">
+  {% comment %} delete and start project {% endcomment %}
+    <form class="none" method="post" style="display:none;">
+      {% csrf_token %}
+      <input type="text" name="start">
+      <input type="text" name="logout">
+      <input type="submit" value="" id="go_tasks_manage">
+    </form>
+  </div>
+
+{% endblock content %}

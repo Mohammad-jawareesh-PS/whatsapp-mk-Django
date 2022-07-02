@@ -1,0 +1,1 @@
+{"version":3,"sources":["test.js"],"names":["console","log"],"mappings":"AAAAA,QAAAC,IAAA","file":"../../../js/login/main.js","sourcesContent":["console.log(\"login working\");\r\n"]}
